@@ -1,14 +1,36 @@
 package vehiculos;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Fabricante {
-	String nombre;
-	Pais pais;
+	private String nombre;
+	private Pais pais;
+	private static HashMap<String, Integer> mapa = new HashMap<>();//Crear por fuera 
 	
 	/*Constructores*/
 	public Fabricante(String nombre, Pais pais) {
 		this.nombre = nombre;
 		this.pais = pais;
+	}
+	
+	/*Fabricante mas vendedor*/
+	public String fabricanteMasVendedor() {
+		
+		for(String fabri:Vehiculo.listado2) {
+			if (mapa.containsKey(fabri)) {
+				mapa.put(fabri, mapa.get(fabri) + 1);
+			} else {
+				mapa.put(fabri, 1);
+			}
+		}
+		int mayor = 0;
+		String moda = null;
+		for (HashMap.Entry<String, Integer> entry : mapa.entrySet()) {
+			if (entry.getValue() > mayor) {
+				mayor = entry.getValue();
+				moda = entry.getKey();
+			}
+		}
+		return moda;
 	}
 	
 	/*getters y setters*/

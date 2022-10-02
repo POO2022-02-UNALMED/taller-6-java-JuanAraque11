@@ -2,14 +2,16 @@ package vehiculos;
 import java.util.ArrayList;
 
 public class Vehiculo {
-	String placa;
-	int puertas;
-	int velocidadMaxima; /*Mirar bien el tipo de dato*/
-	float precio; /*Mirar bien el tipo de dato*/
-	float peso; /*Mirar bien el tipo de dato*/
-	String traccion;
-	Fabricante fabricante;
-	static int CantidadVehiculos;
+	private String placa;
+	private int puertas;
+	private int velocidadMaxima; /*Mirar bien el tipo de dato*/
+	private float precio; /*Mirar bien el tipo de dato*/
+	private float peso; /*Mirar bien el tipo de dato*/
+	private String traccion;
+	private Fabricante fabricante;
+	private static int CantidadVehiculos;
+	public static ArrayList<String> listado = new ArrayList<>();
+	public static ArrayList<String> listado2 = new ArrayList<>();
 	
 	/*Constructores*/
 	public Vehiculo(String placa, int puertas, int velocidadMaxima, float precio, float peso, String traccion,
@@ -22,7 +24,11 @@ public class Vehiculo {
 		this.traccion = traccion;
 		this.fabricante = fabricante;
 		CantidadVehiculos ++;
+		listado.add(this.fabricante.getPais().getNombre());
+		listado2.add(this.fabricante.getNombre());
 	}
+	
+	/*Fabrica mas vendedora*/
 	
 	/*Metodo vehiculosPorTipo*/
 	public static String vehiculosPorTipo() {

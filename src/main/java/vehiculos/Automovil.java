@@ -2,7 +2,7 @@ package vehiculos;
 import java.util.ArrayList;
 
 public class Automovil extends Vehiculo {
-	int puestos;
+	private int puestos;
 	private static ArrayList<Automovil> listado = new ArrayList<>();
 	/*Mirar la parte de crear*/
 	
