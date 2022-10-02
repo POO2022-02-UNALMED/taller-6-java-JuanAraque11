@@ -5,8 +5,9 @@ public class Vehiculo {
 	private String placa;
 	private int puertas;
 	private int velocidadMaxima; /*Mirar bien el tipo de dato*/
-	private float precio; /*Mirar bien el tipo de dato*/
-	private float peso; /*Mirar bien el tipo de dato*/
+	private String nombre;
+	private int precio; /*Mirar bien el tipo de dato*/
+	private int peso; /*Mirar bien el tipo de dato*/
 	private String traccion;
 	private Fabricante fabricante;
 	private static int CantidadVehiculos;
@@ -14,11 +15,12 @@ public class Vehiculo {
 	public static ArrayList<String> listado2 = new ArrayList<>();
 	
 	/*Constructores*/
-	public Vehiculo(String placa, int puertas, int velocidadMaxima, float precio, float peso, String traccion,
-			Fabricante fabricante) {
+	public Vehiculo(String placa, int puertas, int velocidadMaxima, String nombre, int precio, int peso,
+			String traccion, Fabricante fabricante) {
 		this.placa = placa;
 		this.puertas = puertas;
 		this.velocidadMaxima = velocidadMaxima;
+		this.nombre = nombre;
 		this.precio = precio;
 		this.peso = peso;
 		this.traccion = traccion;
@@ -27,9 +29,7 @@ public class Vehiculo {
 		listado.add(this.fabricante.getPais().getNombre());
 		listado2.add(this.fabricante.getNombre());
 	}
-	
-	/*Fabrica mas vendedora*/
-	
+
 	/*Metodo vehiculosPorTipo*/
 	public static String vehiculosPorTipo() {
 		
@@ -37,8 +37,7 @@ public class Vehiculo {
 			   "Camionetas: "+ Camioneta.totalCamionetas() +"\n"+
 			   "Camiones: "+ Camion.totalCamiones();
 	}
-	
-	
+
 	/*getters y setters*/
 	public String getPlaca() {
 		return placa;
@@ -58,16 +57,24 @@ public class Vehiculo {
 	public void setVelocidadMaxima(int velocidadMaxima) {
 		this.velocidadMaxima = velocidadMaxima;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public float getPrecio() {
 		return precio;
 	}
-	public void setPrecio(float precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 	public float getPeso() {
 		return peso;
 	}
-	public void setPeso(float peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 	public String getTraccion() {
