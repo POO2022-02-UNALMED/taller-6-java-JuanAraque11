@@ -13,7 +13,7 @@ public class Fabricante {
 	}
 	
 	/*Fabricante mas vendedor*/
-	public static String fabricanteMasVendedor() {
+	public static String fabricaMayorVentas() {
 		
 		for(String fabri:Vehiculo.listado2) {
 			if (mapa.containsKey(fabri)) {
