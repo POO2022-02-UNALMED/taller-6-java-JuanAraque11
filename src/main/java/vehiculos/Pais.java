@@ -11,7 +11,7 @@ public class Pais {
 	}
 	
 	/*Pais mas vendedor*/
-	public String paisMasVendedor() {
+	public static String paisMasVendedor() {
 		
 		for(String pais:Vehiculo.listado) {
 			if (mapa.containsKey(pais)) {
