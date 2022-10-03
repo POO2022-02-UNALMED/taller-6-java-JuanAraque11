@@ -1,10 +1,12 @@
 package vehiculos;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Fabricante {
 	private String nombre;
 	private Pais pais;
-	private static HashMap<String, Integer> mapa = new HashMap<>();//Crear por fuera 
+	public static Map<Fabricante, Integer> mapaFabri = new HashMap<Fabricante, Integer>();//Crear por fuera 
 	
 	/*Constructores*/
 	public Fabricante(String nombre, Pais pais) {
@@ -13,24 +15,19 @@ public class Fabricante {
 	}
 	
 	/*Fabricante mas vendedor*/
-	public static String fabricaMayorVentas() {
+	public static Fabricante fabricaMayorVentas() {
+		int max= -1;
+		Fabricante fabricaMayorVentas = null;
 		
-		for(String fabri:Vehiculo.listado2) {
-			if (mapa.containsKey(fabri)) {
-				mapa.put(fabri, mapa.get(fabri) + 1);
-			} else {
-				mapa.put(fabri, 1);
+		for(Entry<Fabricante, Integer> entry : mapaFabri.entrySet()) {
+			final int actual = entry.getValue();
+			
+			if (actual > max) {
+				max = actual;
+				fabricaMayorVentas = entry.getKey();
 			}
 		}
-		int mayor = 0;
-		String moda = null;
-		for (HashMap.Entry<String, Integer> entry : mapa.entrySet()) {
-			if (entry.getValue() > mayor) {
-				mayor = entry.getValue();
-				moda = entry.getKey();
-			}
-		}
-		return moda;
+		return fabricaMayorVentas;
 	}
 	
 	/*getters y setters*/

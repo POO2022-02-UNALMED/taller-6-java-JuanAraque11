@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 public class Pais {
 	private String nombre;
-	private static HashMap<String, Integer> mapa = new HashMap<>();//Crear por fuera 
+	public static Map<Pais, Integer> mapaPais = new HashMap<Pais, Integer>();//Crear por fuera 
 	
 	/*Constructores*/
 	public Pais(String nombre) {
@@ -13,24 +13,19 @@ public class Pais {
 	}
 	
 	/*Pais mas vendedor*/
-	public static String paisMasVendedor() {
+	public static Pais paisMasVendedor(){
+		int max = -1;
+		Pais paisMasVendedor = null;
 		
-		for(String pais:Vehiculo.listado) {
-			if (mapa.containsKey(pais)) {
-				mapa.put(pais, mapa.get(pais) + 1);
-			} else {
-				mapa.put(pais, 1);
+		for (Entry<Pais, Integer> entry : mapaPais.entrySet()) {
+			final int actual = entry.getValue();
+			
+			if (actual > max) {
+				max = actual;
+				paisMasVendedor = entry.getKey();
 			}
 		}
-		int mayor = 0;
-		String moda = null;
-		for (HashMap.Entry<String, Integer> entry : mapa.entrySet()) {
-			if (entry.getValue() > mayor) {
-				mayor = entry.getValue();
-				moda = entry.getKey();
-			}
-		}
-		return moda;
+		return paisMasVendedor;
 	}
 	
 	/*getters y setters*/

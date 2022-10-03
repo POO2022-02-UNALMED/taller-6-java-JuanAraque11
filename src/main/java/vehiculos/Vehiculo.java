@@ -1,5 +1,4 @@
 package vehiculos;
-import java.util.ArrayList;
 
 public class Vehiculo {
 	private String placa;
@@ -11,8 +10,6 @@ public class Vehiculo {
 	private String traccion;
 	private Fabricante fabricante;
 	private static int CantidadVehiculos;
-	public static ArrayList<String> listado = new ArrayList<>();
-	public static ArrayList<String> listado2 = new ArrayList<>();
 	
 	/*Constructores*/
 	public Vehiculo(String placa, int puertas, int velocidadMaxima, String nombre, int precio, int peso,
@@ -26,8 +23,20 @@ public class Vehiculo {
 		this.traccion = traccion;
 		this.fabricante = fabricante;
 		CantidadVehiculos ++;
-		listado.add(this.fabricante.getPais().getNombre());
-		listado2.add(this.fabricante.getNombre());
+		
+		if (Pais.mapaPais.containsKey(fabricante.getPais())) {
+			Pais.mapaPais.put(fabricante.getPais(), Pais.mapaPais.get(fabricante.getPais()) + 1);
+		}
+		else {
+			Pais.mapaPais.put(fabricante.getPais(), 1);
+		}
+		
+		if (Fabricante.mapaFabri.containsKey(fabricante)) {
+			Fabricante.mapaFabri.put(fabricante, Fabricante.mapaFabri.get(fabricante) + 1);	
+		}
+		else {
+			Fabricante.mapaFabri.put(fabricante, 1);
+		}
 	}
 
 	/*Metodo vehiculosPorTipo*/
